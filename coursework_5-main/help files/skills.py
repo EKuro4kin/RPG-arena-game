@@ -27,9 +27,10 @@ class Skill(ABC):
     def damage(self):
         pass
 
-    @abstractmethod
     def skill_effect(self) -> str:
-        pass
+        self.target.hp = self.target.hp - self.damage
+        self.user.stamina = self.user.stamina - self.stamina
+        return f"{self.user.name} использует {self.name} и наносит {self.damage} урона сопернику."
 
     def _is_stamina_enough(self):
         return self.user.stamina > self.stamina
@@ -51,17 +52,8 @@ class FuryPunch(Skill):
     stamina = 6
     damage = 12
 
-    def skill_effect(self) -> str:
-        self.target.hp = self.target.hp - self.damage
-        self.user.stamina = self.user.stamina - self.stamina
-        return f"{self.user.name} использует {self.name} и наносит {self.damage} урона сопернику."
-
 class HardShot(Skill):
     name = "Мощный укол"
     stamina = 5
     damage = 15
 
-    def skill_effect(self) -> str:
-        self.target.hp = self.target.hp - self.damage
-        self.user.stamina = self.user.stamina - self.stamina
-        return f"{self.user.name} использует {self.name} и наносит {self.damage} урона сопернику."
