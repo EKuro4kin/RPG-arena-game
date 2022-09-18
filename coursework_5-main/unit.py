@@ -1,8 +1,8 @@
 from __future__ import annotations
-from abc import ABC, abstractmethod
-from equipment import Equipment, Weapon, Armor
+from abc import ABC
+from equipment import Weapon, Armor
 from classes import UnitClass
-from random import randint, uniform
+from random import uniform
 from typing import Optional
 
 
@@ -36,7 +36,7 @@ class BaseUnit(ABC):
 
     def equip_armor(self, armor: Armor):
         self.armor = armor
-        return f"{self.name} экипирован броней {self.weapon.name}"
+        return f"{self.name} экипирован броней {self.armor.name}"
 
     def _count_damage(self, target: BaseUnit) -> int:
         self.stamina -= self.weapon.stamina_per_hit
