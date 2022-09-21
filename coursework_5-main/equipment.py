@@ -10,7 +10,7 @@ import json
 @dataclass
 class Armor:
     id: int
-    name: str
+    name: int
     defence: float
     stamina_per_turn: float
 
@@ -60,6 +60,7 @@ class Equipment:
         equipment_file = open("./data/equipment.json", encoding='utf-8')
         data = json.load(equipment_file)
         equipment_schema = marshmallow_dataclass.class_schema(EquipmentData)
+        #сделали дата класс с валидацией с помощью маршмаллоу_датакласс
         try:
             return equipment_schema().load(data)
         except marshmallow.exceptions.ValidationError:

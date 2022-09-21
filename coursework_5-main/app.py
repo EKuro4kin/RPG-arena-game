@@ -24,6 +24,7 @@ def start_fight():
     arena.start_game(player=heroes['player'], enemy=heroes['enemy'])
     return render_template('fight.html', heroes=heroes, result="Начало боя")
 
+
 @app.route("/fight/hit")
 def hit():
     if arena.game_is_running:
@@ -77,6 +78,7 @@ def choose_hero():
         new_player.equip_weapon(Equipment().get_weapon(weapon_name))
         heroes['player'] = new_player
         return redirect(url_for("choose_enemy"))
+
 
 @app.route("/choose-enemy/", methods=['post', 'get'])
 def choose_enemy():

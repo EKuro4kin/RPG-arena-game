@@ -17,7 +17,7 @@ class Arena(metaclass=BaseSingleton):
     game_is_running = False
     battle_result = "Бой не завершон"
 
-    def start_game(self, player: BaseUnit, enemy: BaseUnit):
+    def start_game(self, player: BaseUnit, enemy: BaseUnit) -> None:
         self.player = player
         self.enemy = enemy
         self.game_is_running = True
